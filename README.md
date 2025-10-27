@@ -3,8 +3,8 @@
 - Author: Mia Scott
 - Date: 10/24/25
 - GitHub repository: exercise9
-- This was run at the <???> cluster of the Ohio Supercomputer Center (<www.osc.edu>)
-- OSC working dir: <???>
+- This was run at the pitzer cluster of the Ohio Supercomputer Center (<www.osc.edu>)
+- OSC working dir: /fs/ess/PAS2880/users/scott2291/week09/exercises
 
 ## Prerequisites
 
