@@ -84,8 +84,15 @@ done
 
 ## Step 4: Creating a reference genome index with STAR
 
-<???>
+```bash
+sbatch scripts/star_index.sh "$ref_assembly" "$ref_annotation" results/star/index
+```
 
 ## Step 5: Trimmed read alignment to the reference genome index with STAR
 
-<???>
+```bash
+for R1 in results/trimgalore/*R1.fastq.gz; do
+    R2="${R1/_R1/_R2}"
+    sbatch scripts/star_align.sh "$R1" "$R2" results/star/index "$ref_annotation" results/star
+done
+```

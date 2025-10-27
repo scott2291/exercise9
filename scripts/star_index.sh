@@ -30,6 +30,7 @@ apptainer exec "$STAR_CONTAINER" STAR \
     --genomeFastaFiles "$fasta" \
     --sjdbGTFfile "$gtf" \
     --genomeDir "$outdir" \
+    --genomeSAindexNbases 13 \
     --runThreadN 16
 
 #? - Note: This command was kept as simple as possible - if using STAR in your research,
