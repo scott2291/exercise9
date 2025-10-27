@@ -47,9 +47,9 @@
 
 ```bash
 # Inputs:
-fastq_dir=<???>
-ref_assembly=<???>
-ref_annotation=<???>
+fastq_dir=garrigos-data/fastq
+ref_assembly=garrigos-data/ref/GCF_016801865.2_TS_CPP_V2_genomic.fna
+ref_annotation=garrigos-data/ref/GCF_016801865.2.gtf
 
 # Base output dir:
 outdir=results
@@ -62,17 +62,25 @@ the input FASTQ file and output dir:
 
 ```bash
 for fastq in "$fastq_dir"/*fastq.gz; do
-    sbatch scripts/fastqc.sh <???> "$outdir"/fastqc
+    sbatch scripts/fastqc.sh "$fastq" "$outdir"/fastqc
 done
 ```
 
 ## Step 2: FastQC summaries with MultiQC
 
-<???>
+```bash
+sbatch scripts/multiqc.sh "$outdir"/fastqc "$outdir"/multiqc
+```
 
 ## Step 3: Read trimming with TrimGalore
 
-<???>
+```bash
+for R1 in "$fastq_dir"/*_R1.fastq.gz; do
+    R2="${R1/_R1/_R2}"
+    sbatch scripts/trimgalore.sh "$R1" "$R2" "$outdir"/trimgalore
+done
+
+```
 
 ## Step 4: Creating a reference genome index with STAR
 
